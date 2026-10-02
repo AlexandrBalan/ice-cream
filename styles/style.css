@@ -1,5 +1,56 @@
 * {
     font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aliceblue;
+    padding: 2rem 1rem;
+}
+
+
+#main {
+    position: relative;
+    background-color: white;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+fieldset {
+    border: 1px solid lightgray;
+    border-radius: .5rem;
+    margin-bottom: 1.25rem;
+}
+
+
+legend {
+    color: darkgreen;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 0 .5rem;
+}
+
+
+label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: .25rem;
+}
+
+label.option {
+    display: inline;
+    margin: 0 .25rem 0 0;
+}
+
+label input[type = "radio"], label input[type = "checkbox"] {
+    display: inline;
 }
 
 label {
