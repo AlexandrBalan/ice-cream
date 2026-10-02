@@ -1,0 +1,15 @@
+* {
+    font-family: sans-serif;
+}
+
+label {
+    display: block;
+}
+
+.section-labels {
+    color: darkgreen;
+}
+
+label input[type = "radio"], label input[type = "checkbox"] {
+    display: inline;
+}
