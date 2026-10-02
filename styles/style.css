@@ -53,14 +53,29 @@ label input[type = "radio"], label input[type = "checkbox"] {
     display: inline;
 }
 
-label {
-    display: block;
+input[type="text"], input[type="email"], select, textarea {
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: .25rem;
+    padding: .5rem;
+}
+
+textarea {
+    resize: none;
+}
+
+
+button {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: .25rem;
+    padding: .75rem;
+    font-size: 1rem;
 }
 
 .section-labels {
     color: darkgreen;
 }
 
-label input[type = "radio"], label input[type = "checkbox"] {
-    display: inline;
-}
