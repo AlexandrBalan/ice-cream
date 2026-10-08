@@ -3,53 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
     <title>Ice Cream Shop</title>
 </head>
 <body>
+    <div id="main">
     <h1>Ice Cream Order Form</h1>
-    <h2>Personal Information</h2>
+
 
 
 
     <form action="">
-
+        <fieldset>
+        <legend>Personal Information</legend>
         <label for="name">Name:</label>
-        <input type="text" name = "" id = "">
+        <input type="text" name = "name" id = "name">
 
         <label for="email">Email:</label>
-        <input type="email">
-
-        <label for="section-labels">Order Details</label>
-
+        <input type="email" name = "email" id ="email">
+        </fieldset>
 
 
-        <label>Choose Your Flavor</label>
-        <select name="" id="">
+
+        <fieldset>
+        <legend>Order Details</legend>
+
+        <label for = "flavor">Choose Your Flavor</label>
+        <select name="flavor" id="flavor">
             <option value="vanilla">Vanilla</option>
             <option value="chocolate">Chocolate</option>
             <option value="huckleberry">HuckleBerry</option>
         </select>
 
 
+        <label>Choose your cone:</label>
+        <label class = "option"><input type="radio" name = "conetype" value = "waffle">Waffle cone</label>
+        <label class = "option"><input type="radio" name = "conetype" value = "waffle">Sugar cone</label>
+        <label class = "option"><input type="radio" name = "conetype" value = "waffle"> Cup</label>
 
-        <label for="cone">Choose your cone:</label>
-        <label for=""><input type="radio" name = "conetype">Waffle cone</label>
-        <label for=""><input type="radio" name = "conetype">Sugar cone</label>
-        <label for=""><input type="radio" name = "conetype"> Cup</label>
 
 
-        <label for="">Toppings:</label>
-        <label for=""><input type="checkbox" name = "topping">Sprinkles</label>
-        <label for=""><input type="checkbox" name = "topping">Nuts</label>
-        <label for=""><input type="checkbox" name = "topping">Cherry</label>
-        <label for=""><input type="checkbox" name = "topping">Whipped Cream</label>
 
-        <label for="">Additional comments: </label>
-        <textarea name="" id=""> </textarea>
+        
+        <label>Toppings:</label>
+        <label class = "option"><input type="checkbox" name = "topping" value = "sprinkles">Sprinkles</label>
+        <label class = "option"><input type="checkbox" name = "topping" value = "nuts">Nuts</label>
+        <label class = "option"><input type="checkbox" name = "topping" value = "cherry">Cherry</label>
+        <label class = "option"><input type="checkbox" name = "topping" value = "whipped cream">Whipped Cream</label>
 
+        <label for="comments">Additional comments:</label>
+        <textarea name="comments" id="comments" rows="4"></textarea>
+        </fieldset>
 
         <button>Submit Order</button>
     </form>
+
+    <img id = "cone" src="/public/images/icecream.jpg" alt="Vanilla Ice Cream on a Cone">
+    </div>
 </body>
 </html>
