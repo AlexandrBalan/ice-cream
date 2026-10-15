@@ -11,16 +11,16 @@
     <div id="main">
     <h1>Ice Cream Order Form</h1>
 
-    <form action="" novalidate>
+    <form action="" id="ice-cream-form" novalidate>
         <fieldset>
         <legend>Personal Information</legend>
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
-        <span class="error" id="name-error"></span>
+        <span class="err" id="err-name">Please enter your name.</span>
 
         <label for="email">Email:</label>
         <input type="email" name="email" id="email">
-        <span class="error" id="email-error"></span>
+        <span class="err" id="err-email">Please enter a valid email with an @ symbol.</span>
         </fieldset>
 
         <fieldset>
@@ -28,18 +28,18 @@
 
         <label for="flavor">Choose Your Flavor</label>
         <select name="flavor" id="flavor">
-            <option value="">Select a flavor</option>
+            <option value="none">Select a flavor</option>
             <option value="vanilla">Vanilla</option>
             <option value="chocolate">Chocolate</option>
             <option value="huckleberry">HuckleBerry</option>
         </select>
-        <span class="error" id="flavor-error"></span>
+        <span class="err" id="err-flavor">Please choose a flavor.</span>
 
         <label>Choose your cone:</label>
         <label class="option"><input type="radio" name="conetype" value="waffle">Waffle cone</label>
         <label class="option"><input type="radio" name="conetype" value="sugar">Sugar cone</label>
         <label class="option"><input type="radio" name="conetype" value="cup">Cup</label>
-        <span class="error" id="cone-error"></span>
+        <span class="err" id="err-cone">Please choose a cone.</span>
 
         <label>Toppings:</label>
         <label class="option"><input type="checkbox" name="topping" value="sprinkles">Sprinkles</label>

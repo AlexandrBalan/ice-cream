@@ -1,48 +1,46 @@
-const form = document.querySelector("form");
+document.getElementById("ice-cream-form").onsubmit = () => {
 
-form.addEventListener("submit", function (event) {
     let isValid = true;
 
-    const name = document.getElementById("name");
-    const nameError = document.getElementById("name-error");
-    if (name.value.trim() === "") {
-        nameError.textContent = "Please enter your name.";
+    clearErrors();
+
+    let name = document.getElementById("name").value.trim();
+    if (name === "") {
+        document.getElementById("err-name").style.display = "block";
         isValid = false;
-    } else {
-        nameError.textContent = "";
     }
 
-    const email = document.getElementById("email");
-    const emailError = document.getElementById("email-error");
-    if (email.value.trim() === "") {
-        emailError.textContent = "Please enter your email.";
+    let email = document.getElementById("email").value.trim();
+    if (email === "" || !email.includes("@")) {
+        document.getElementById("err-email").style.display = "block";
         isValid = false;
-    } else if (!email.value.includes("@")) {
-        emailError.textContent = "Your email needs an @ symbol.";
-        isValid = false;
-    } else {
-        emailError.textContent = "";
     }
 
-    const flavor = document.getElementById("flavor");
-    const flavorError = document.getElementById("flavor-error");
-    if (flavor.value === "") {
-        flavorError.textContent = "Please choose a flavor.";
+    let flavor = document.getElementById("flavor").value;
+    if (flavor === "none") {
+        document.getElementById("err-flavor").style.display = "block";
         isValid = false;
-    } else {
-        flavorError.textContent = "";
     }
 
-    const cone = document.querySelector('input[name="conetype"]:checked');
-    const coneError = document.getElementById("cone-error");
-    if (cone === null) {
-        coneError.textContent = "Please choose a cone.";
-        isValid = false;
-    } else {
-        coneError.textContent = "";
+    let coneSelected = false;
+    let coneButtons = document.getElementsByName("conetype");
+    for (let i = 0; i < coneButtons.length; i++) {
+        if (coneButtons[i].checked) {
+            coneSelected = true;
+        }
     }
 
-    if (!isValid) {
-        event.preventDefault();
+    if (!coneSelected) {
+        document.getElementById("err-cone").style.display = "block";
+        isValid = false;
     }
-});
+
+    return isValid;
+};
+
+function clearErrors() {
+    let errors = document.getElementsByClassName("err");
+    for (let i = 0; i < errors.length; i++) {
+        errors[i].style.display = "none";
+    }
+}
