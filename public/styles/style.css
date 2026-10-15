@@ -87,3 +87,8 @@ button {
     top: 30px;
     width: 400px;
 }
+
+.error {
+    color: red;
+    display: block;
+}
