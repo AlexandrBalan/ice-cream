@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3001;
 
 //enable static file serving
-app.use(express.static('public'));  
+app.use(express.static('public'));
 
 //defining a default route ("/")
 app.get('/', (req, res) => {
