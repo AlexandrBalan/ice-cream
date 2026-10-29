@@ -6,7 +6,14 @@ document.getElementById("ice-cream-form").onsubmit = () => {
 
     let name = document.getElementById("fname").value.trim();
     if (name === "") {
-        document.getElementById("err-name").style.display = "block";
+        document.getElementById("err-fname").style.display = "block";
+        isValid = false;
+    }
+
+    
+    let lname = document.getElementById("lname").value.trim();
+    if (lname === "") {
+        document.getElementById("err-lname").style.display = "block";
         isValid = false;
     }
 
