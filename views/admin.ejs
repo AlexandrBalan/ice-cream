@@ -17,8 +17,7 @@
         <thead>
             <tr>
                 <th>Time</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Customer</th>
                 <th>Email</th>
                 <th>Flavor</th>
                 <th>Conetype</th>
@@ -29,8 +28,7 @@
         <% orders.forEach(order=> { %>
             <tr>
                 <td><%= order.timestamp %></td>
-                <td><%= order.fname %></td>
-                <td><%= order.lname %></td>
+                <td><%= order.fname %> <%= order.lname %></td>
                 <td><%= order.email %></td>
                 <td><%= order.flavor %></td>
                 <td><%= order.conetype %></td>
