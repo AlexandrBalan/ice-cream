@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/confirm.css" />
     <title>Confirmation</title>
-</head>
-<body>
-    <h1>Thank you for your order, <%= order.fname %>!</h1>
+  </head>
+  <body>
+    <h1>Thank you for your order, <%= order.name %>!</h1>
 
     <h2>Your ice cream order has been confirmed</h2>
 
@@ -16,5 +17,5 @@
     <p>Cone Type: <%= order.conetype %></p>
     <p>Toppings: <%= order.topping %></p>
     <p>Comment: <%= order.comments %></p>
-</body>
+  </body>
 </html>

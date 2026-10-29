@@ -7,7 +7,7 @@ const app = express();
 //define a port number for our server to listen on
 const PORT = 3001;
 
-const orderArray = [];
+const order = [];
 
 //enable static file serving
 app.use(express.static("public"));
@@ -23,8 +23,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit-order", (req, res) => {
-  orderArray.push(req.body);
-  console.log(orderArray);
+  order.push(req.body);
+  console.log(order);
+
+  res.render("confirm", { order });
 });
 
 //start the server on the designated port
