@@ -29,6 +29,16 @@ app.post("/submit-order", (req, res) => {
   res.render("confirm", { order });
 });
 
+
+
+//add a admin route to display a contact view page
+app.get('/admin', (req, res) => {
+    // res.send('Welcome to Poppa\'s Pizza');
+    res.render("admin", { order });
+});
+
+
+
 //start the server on the designated port
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
