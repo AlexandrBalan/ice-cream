@@ -16,7 +16,9 @@
     <table id="order-table" class="display">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Time</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Email</th>
                 <th>Flavor</th>
                 <th>Conetype</th>
@@ -26,7 +28,9 @@
         </thead>
         <% orders.forEach(order=> { %>
             <tr>
-                <td><%= order.name %></td>
+                <td><%= order.timestamp %></td>
+                <td><%= order.fname %></td>
+                <td><%= order.lname %></td>
                 <td><%= order.email %></td>
                 <td><%= order.flavor %></td>
                 <td><%= order.conetype %></td>

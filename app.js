@@ -22,8 +22,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+
 app.post("/submit-order", (req, res) => {
   const order = req.body;
+  order.timestamp = new Date().toLocaleString();
   orders.push(order);
   console.log(order);
 
@@ -32,8 +34,7 @@ app.post("/submit-order", (req, res) => {
 
 //add a admin route to display a contact view page
 app.get("/admin", (req, res) => {
-  // res.send('Welcome to Poppa\'s Pizza');
-  res.render("admin", { order });
+  res.render("admin", { orders });
 });
 
 //start the server on the designated port
