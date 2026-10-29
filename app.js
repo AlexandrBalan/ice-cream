@@ -10,6 +10,10 @@ const PORT = 3001;
 //enable static file serving
 app.use(express.static('public'));
 
+app.use(express.urlencoded({ extended: true }));
+
+app.set('view engine', 'ejs');
+
 //defining a default route ("/")
 app.get('/', (req, res) => {
     // res.send('Welcome to My Ice Cream Shop');
