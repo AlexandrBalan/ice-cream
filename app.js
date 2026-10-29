@@ -22,6 +22,11 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.post("/submit-order", (req, res) => {
+  orderArray.push(req.body);
+  console.log(orderArray);
+});
+
 //start the server on the designated port
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
