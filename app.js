@@ -1,5 +1,5 @@
 // import the express module
-import express from 'express';
+import express from "express";
 
 //create an instance of an express application
 const app = express();
@@ -7,20 +7,22 @@ const app = express();
 //define a port number for our server to listen on
 const PORT = 3001;
 
+const orderArray = [];
+
 //enable static file serving
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: true }));
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 //defining a default route ("/")
-app.get('/', (req, res) => {
-    // res.send('Welcome to My Ice Cream Shop');
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+app.get("/", (req, res) => {
+  // res.send('Welcome to My Ice Cream Shop');
+  res.render("home");
 });
 
 //start the server on the designated port
 app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
