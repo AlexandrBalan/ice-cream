@@ -7,15 +7,28 @@
     <title>Confirmation</title>
   </head>
   <body>
-    <h1>Thank you for your order, <%= order.name %>!</h1>
+    <div id="main">
+      <div id="heading">
+        <div>
+          <img src="/images/checkmark.svg" alt="A checkmark" />
+        </div>
+        <h1>Thank You for Your Order!</h1>
+        <span>Your ice cream order has been confirmed</span>
+      </div>
+      <div id="body">
+        <h2>Personal Information</h2>
+        <div>
+          <p>Name: <%= order.name %></p>
+        </div>
+        <div>
+          <p>Email: <%= order.email %></p>
+        </div>
+      </div>
 
-    <h2>Your ice cream order has been confirmed</h2>
-
-    <p>Name: <%= order.name %></p>
-    <p>Email: <%= order.email %></p>
-    <p>Flavor: <%= order.flavor %></p>
-    <p>Cone Type: <%= order.conetype %></p>
-    <p>Toppings: <%= order.topping %></p>
-    <p>Comment: <%= order.comments %></p>
+      <p>Flavor: <%= order.flavor %></p>
+      <p>Cone Type: <%= order.conetype %></p>
+      <p>Toppings: <%= order.topping %></p>
+      <p>Comment: <%= order.comments %></p>
+    </div>
   </body>
 </html>
