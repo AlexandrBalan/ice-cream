@@ -7,7 +7,7 @@ const app = express();
 //define a port number for our server to listen on
 const PORT = 3001;
 
-const order = [];
+const orders = [];
 
 //enable static file serving
 app.use(express.static("public"));
@@ -23,21 +23,18 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit-order", (req, res) => {
-  order.push(req.body);
+  const order = req.body;
+  orders.push(order);
   console.log(order);
 
   res.render("confirm", { order });
 });
 
-
-
 //add a admin route to display a contact view page
-app.get('/admin', (req, res) => {
-    // res.send('Welcome to Poppa\'s Pizza');
-    res.render("admin", { order });
+app.get("/admin", (req, res) => {
+  // res.send('Welcome to Poppa\'s Pizza');
+  res.render("admin", { order });
 });
-
-
 
 //start the server on the designated port
 app.listen(PORT, () => {
