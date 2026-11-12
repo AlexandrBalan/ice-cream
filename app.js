@@ -62,6 +62,17 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.get("/db-test", async (req, res) => {
+  try {
+    const [orders] = await pool.query("SELECT * FROM orders");
+    res.send(orders);
+  } catch (err) {
+    console.error("Database error: ", err);
+    res.status(500).send("Dataabse error: " + err.message);
+  }
+
+})
+
 
 app.post("/submit-order", (req, res) => {
   const order = req.body;
