@@ -4,11 +4,7 @@ import express from "express";
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 
-
-
 dotenv.config();
-
-
 
 const pool = mysql2.createPool({
   host: process.env.DB_HOST,
@@ -18,29 +14,6 @@ const pool = mysql2.createPool({
   port: process.env.DB_PORT,
 }).promise();
 
-
-app.get('/db-test', async (req, res) => {
-    try {
-        const [orders] = await pool.query('SELECT * FROM orders');
-        res.send(orders);
-    } catch (err) {
-        console.error('Database error:', err);
-        res.status(500).send('Database error: ' + err.message);
-    }
-});
-
-
-app.get('/admin', async (req, res) => {
-    try {
-        const [orders] = await pool.query(
-            'SELECT * FROM orders ORDER BY timestamp DESC'
-        );
-        res.render('admin', { orders });
-    } catch (err) {
-        console.error('Database error:', err);
-        res.status(500).send('Database error: ' + err.message);
-    }
-});
 //create an instance of an express application
 const app = express();
 
@@ -62,30 +35,59 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/db-test", async (req, res) => {
+// app.get("/db-test", async (req, res) => {
+//   try {
+//     const [orders] = await pool.query("SELECT * FROM orders");
+//     res.send(orders);
+//   } catch (err) {
+//     console.error("Database error: ", err);
+//     res.status(500).send("Database error: " + err.message);
+//   }
+// });
+
+app.post("/submit-order", async (req, res) => {
   try {
-    const [orders] = await pool.query("SELECT * FROM orders");
-    res.send(orders);
+    const order = req.body;
+    console.log("New order submitted:", order);
+
+    order.toppings = Array.isArray(order.toppings)
+      ? order.toppings.join(", ")
+      : "";
+
+    const sql = `INSERT INTO orders (customer, email, flavor, cone, toppings, comment) VALUES (?, ?, ?, ?, ?, ?);`;
+
+    const params = [
+      order.customer,
+      order.email,
+      order.flavor,
+      order.cone,
+      order.toppings,
+      order.comment
+    ];
+
+    const [result] = await pool.execute(sql, params);
+
+    order.id = result.insertId;
+    console.log("Order saved with ID:", order.id);
+
+    res.render("confirm", { order });
   } catch (err) {
-    console.error("Database error: ", err);
-    res.status(500).send("Dataabse error: " + err.message);
+    console.error("Error saving order:", err);
+    res.status(500).send("Sorry, there was an error processing your order. Please try again.");
   }
-
-})
-
-
-app.post("/submit-order", (req, res) => {
-  const order = req.body;
-  order.timestamp = new Date().toLocaleString();
-  orders.push(order);
-  console.log(order);
-
-  res.render("confirm", { order });
 });
 
 //add a admin route to display a contact view page
-app.get("/admin", (req, res) => {
-  res.render("admin", { orders });
+app.get("/admin", async (req, res) => {
+  try {
+    const [orders] = await pool.query(
+      "SELECT * FROM orders ORDER BY timestamp DESC"
+    );
+    res.render("admin", { orders });
+  } catch (err) {
+    console.error("Database error:", err);
+    res.status(500).send("Error loading orders: " + err.message);
+  }
 });
 
 //start the server on the designated port
