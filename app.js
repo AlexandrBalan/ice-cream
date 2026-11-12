@@ -20,7 +20,6 @@ const app = express();
 //define a port number for our server to listen on
 const PORT = 3001;
 
-const orders = [];
 
 //enable static file serving
 app.use(express.static("public"));
