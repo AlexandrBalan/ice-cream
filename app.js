@@ -19,7 +19,28 @@ const pool = mysql2.createPool({
 }).promise();
 
 
+app.get('/db-test', async (req, res) => {
+    try {
+        const [orders] = await pool.query('SELECT * FROM orders');
+        res.send(orders);
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Database error: ' + err.message);
+    }
+});
 
+
+app.get('/admin', async (req, res) => {
+    try {
+        const [orders] = await pool.query(
+            'SELECT * FROM orders ORDER BY timestamp DESC'
+        );
+        res.render('admin', { orders });
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Database error: ' + err.message);
+    }
+});
 //create an instance of an express application
 const app = express();
 
