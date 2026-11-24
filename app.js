@@ -74,6 +74,20 @@ app.get("/login", (req, res) => {
   res.render("login", { error: null });
 });
 
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if(username === process.env.ADMIN_USER &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
+    req.session.loggedIn = true;
+    res.redirect('/admin');
+  } else {
+    res.render('login', { error: 'Invalid username or password.'});
+  }
+});
+
 app.post("/submit-order", async (req, res) => {
   try {
     const order = req.body;
