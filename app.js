@@ -62,13 +62,6 @@ function requireLogin(req, res, next) {
   }
 }
 
-app.get("/session-test", (req, res) => {
-  req.session.views = (req.session.views || 0) + 1
-  res.send(`Visits: ${req.session.views} <br/>
-      Logged in: ${req.session.loggedIn === true}`)
-
-})
-
 // show the login page (no error yet)
 app.get("/login", (req, res) => {
   res.render("login", { error: null });
@@ -121,7 +114,7 @@ app.post("/submit-order", async (req, res) => {
 });
 
 //add a admin route to display a contact view page
-app.get("/admin", async (req, res) => {
+app.get("/admin", requireLogin, async (req, res) => {
   try {
     const [orders] = await pool.query(
       "SELECT * FROM orders ORDER BY timestamp DESC"
@@ -132,6 +125,12 @@ app.get("/admin", async (req, res) => {
     res.status(500).send("Error loading orders: " + err.message);
   }
 });
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/login");
+  })
+})
 
 //start the server on the designated port
 app.listen(PORT, () => {
