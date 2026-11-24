@@ -69,6 +69,11 @@ app.get("/session-test", (req, res) => {
 
 })
 
+// show the login page (no error yet)
+app.get("/login", (req, res) => {
+  res.render("login", { error: null });
+});
+
 app.post("/submit-order", async (req, res) => {
   try {
     const order = req.body;
