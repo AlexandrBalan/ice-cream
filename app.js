@@ -54,6 +54,21 @@ app.get("/", (req, res) => {
 //   }
 // });
 
+function requireLogin(req, res, next) {
+  if (req.session.loggedIn) {
+    next()
+  } else {
+    res.redirect("/login")
+  }
+}
+
+app.get("/session-test", (req, res) => {
+  req.session.views = (req.session.views || 0) + 1
+  res.send(`Visits: ${req.session.views} <br/>
+      Logged in: ${req.session.loggedIn === true}`)
+
+})
+
 app.post("/submit-order", async (req, res) => {
   try {
     const order = req.body;

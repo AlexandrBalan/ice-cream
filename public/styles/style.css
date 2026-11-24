@@ -53,7 +53,7 @@ label input[type = "radio"], label input[type = "checkbox"] {
     display: inline;
 }
 
-input[type="text"], input[type="email"], select, textarea {
+input[type="text"], input[type="email"], select, textarea, input[type="password"] {
     width: 100%;
     border: 1px solid lightgray;
     border-radius: .25rem;
@@ -91,4 +91,8 @@ button {
 .err {
     color: red;
     display: none;
+}
+
+.login-error {
+    color: red;
 }
